@@ -23,19 +23,27 @@ namespace IDictionary
 
             Operacao[] operacoesOrdenadas = apuracao.ListaOrdenada(operacoes);
 
+            Console.WriteLine("Ordenado:");
 
-            IDictionary<string,List<Operacao>> operacoesAgrupadas = apuracao.AgruparPorIdentificador(operacoesOrdenadas);
-
-            foreach (var item in operacoesAgrupadas)
+            foreach (Operacao item in operacoesOrdenadas)
             {
-                Console.WriteLine();
+                Console.WriteLine("{0} {1} {2}", item.Id, item.Identificador, item.Valor);
+            }
+
+            Console.WriteLine("----------");
+
+            IDictionary<string, List<Operacao>> operacoesAgrupadas = apuracao.AgruparPorIdentificador(operacoesOrdenadas);
+
+            foreach (KeyValuePair<string, List<Operacao>> item in operacoesAgrupadas)
+            {
+                Console.WriteLine($"Existem {item.Value.Count} operações de identificador {item.Key}.");
             }
 
             IDictionary<string, double> operacoesSumarizadas = apuracao.SumarizarPorIdentificador(operacoesOrdenadas);
 
-            foreach (var item in operacoesSumarizadas)
+            foreach (KeyValuePair<string, double> item in operacoesSumarizadas)
             {
-                Console.WriteLine();
+                Console.WriteLine($"Soma das operações de identificador {item.Key} é {item.Value}.");
             }
 
         }
