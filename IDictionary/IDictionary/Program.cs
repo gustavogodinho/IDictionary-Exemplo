@@ -19,9 +19,7 @@ namespace IDictionary
 
 
             ApuracaoOperacao apuracao = new ApuracaoOperacao();
-
-
-            Operacao[] operacoesOrdenadas = apuracao.ListaOrdenada(operacoes);
+            IEnumerable<Operacao> operacoesOrdenadas = apuracao.ListaOrdenada(operacoes);
 
             Console.WriteLine("Ordenado:");
 
@@ -31,6 +29,7 @@ namespace IDictionary
             }
 
             Console.WriteLine("----------");
+         
 
             IDictionary<string, List<Operacao>> operacoesAgrupadas = apuracao.AgruparPorIdentificador(operacoesOrdenadas);
 
@@ -45,8 +44,6 @@ namespace IDictionary
             {
                 Console.WriteLine($"Soma das operações de identificador {item.Key} é {item.Value}.");
             }
-
         }
-
     }
 }
