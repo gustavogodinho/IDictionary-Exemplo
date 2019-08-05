@@ -7,22 +7,17 @@ namespace IDictionary
 {
     class ApuracaoOperacao
     {
-        public Operacao[] ListaOrdenada(Operacao[] operacoes)
+        public IEnumerable<Operacao> ListaOrdenada(IEnumerable<Operacao> operacoes)
         {
-            
             try
             {
                 Operacao[] operacaoSort = operacoes.OrderBy(oper => oper.Id).ToArray();
-
                 return operacaoSort;
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-           
         }
 
         public IDictionary<string, List<Operacao>> AgruparPorIdentificador(IEnumerable<Operacao> operacoes)
@@ -40,13 +35,11 @@ namespace IDictionary
                     retorno.Add(item.Identificador, new List<Operacao>() { item });
                 }
             }
-
             return retorno;
         }
 
         public IDictionary<string, double> SumarizarPorIdentificador(IEnumerable<Operacao> operacoes)
         {
-
             IDictionary<string, double> retorno = new Dictionary<string, double>();
 
             foreach (var item in operacoes)
@@ -59,9 +52,7 @@ namespace IDictionary
                 {
                     retorno.Add(item.Identificador, item.Valor);
                 }
-
             }
-
             return retorno;
         }
     }
